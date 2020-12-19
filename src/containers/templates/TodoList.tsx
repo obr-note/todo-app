@@ -1,5 +1,5 @@
-// import React, { FC } from 'react';
 import React, { FC, useState } from 'react';
+import { Button, Checkbox, Form } from 'semantic-ui-react';
 import TodoList from '../../components/templates/TodoList';
 
 const EnhancedTodoList: FC = () => {
@@ -9,20 +9,33 @@ const EnhancedTodoList: FC = () => {
     setState([...state, { id: count, text: 'おはよう' }]);
     setCount((c) => c + 1);
   };
-  // const data: { id: number; text: string }[] = [
-  //   { id: 1, text: 'おはようございます' },
-  //   { id: 2, text: 'おっはー' },
-  //   { id: 3, text: 'おはようございます' },
-  // ];
 
   return (
     <>
       {state.map((item) => (
         <TodoList key={item.id} text={item.text} />
       ))}
-      <button onClick={add} type="button">
+      <Button color="green" onClick={add}>
         押してね
-      </button>
+      </Button>
+      <Form>
+        <Form.Field>
+          <label htmlFor="firstName">
+            First Name
+            <input placeholder="First Name" id="firstName" />
+          </label>
+        </Form.Field>
+        <Form.Field>
+          <label htmlFor="lastName">
+            Last Name
+            <input placeholder="Last Name" id="lastName" />
+          </label>
+        </Form.Field>
+        <Form.Field>
+          <Checkbox label="I agree to the Terms and Conditions" />
+        </Form.Field>
+        <Button type="submit">Submit</Button>
+      </Form>
     </>
   );
 };
