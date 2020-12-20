@@ -8,21 +8,7 @@ const EnhancedHome: FC = () => {
   });
   const [count, setCount] = useState(0);
   const [content, setContent] = useState<{ id: number; text: string }[]>([]);
-  const addFunction = () => {
-    setContent([...content, { id: count, text: 'おはよう' }]);
-    setCount((c) => c + 1);
-  };
-  // const handleChange = (e) => {
-  //   setInput(e.target.value);
-  // };
-  const onSubmitFunction = () => {
-    setContent([
-      ...content,
-      { id: count, text: input.firstName + input.lastName },
-    ]);
-    setCount((c) => c + 1);
-  };
-  const onChangeFunction = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeFunc = (event: React.ChangeEvent<HTMLInputElement>) => {
     let { firstName, lastName } = input;
     if (event.target.id === 'firstName') {
       firstName = event.target.value;
@@ -31,14 +17,25 @@ const EnhancedHome: FC = () => {
     }
     setInput({ firstName, lastName });
   };
+  const onSubmitFunc = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setContent([
+      ...content,
+      { id: count, text: input.firstName + input.lastName },
+    ]);
+    setCount((c) => c + 1);
+  };
+  const onResetFunc = () => {
+    setInput({ firstName: '', lastName: '' });
+  };
 
   return (
     <>
       <Home
         content={content}
-        addFunction={addFunction}
-        onChangeFunction={onChangeFunction}
-        onSubmitFunction={onSubmitFunction}
+        onChangeFunc={onChangeFunc}
+        onSubmitFunc={onSubmitFunc}
+        onResetFunc={onResetFunc}
       />
     </>
   );
