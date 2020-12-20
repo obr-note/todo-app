@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Button, Checkbox, Form } from 'semantic-ui-react';
+import { Container, Button, Form, List } from 'semantic-ui-react';
 
 const Home: FC<{
   content: { id: number; text: string }[];
@@ -7,38 +7,38 @@ const Home: FC<{
   onSubmitFunc: (event: React.FormEvent<HTMLFormElement>) => void;
   onResetFunc: (event: React.FormEvent<HTMLFormElement>) => void;
 }> = ({ content, onChangeFunc, onSubmitFunc, onResetFunc }) => (
-  <>
-    {content.map((item) => (
-      <p key={item.id}>{item.text}</p>
-    ))}
+  <Container>
     <Form onSubmit={onSubmitFunc} onReset={onResetFunc}>
       <Form.Field>
-        <label htmlFor="firstName">
-          First Name
-          <input
-            placeholder="First Name"
-            id="firstName"
-            onChange={onChangeFunc}
-          />
-        </label>
+        <Form.Input
+          label="First Name"
+          placeholder="First Name"
+          id="firstName"
+          onChange={onChangeFunc}
+          required
+        />
       </Form.Field>
-      <Form.Field>
-        <label htmlFor="lastName">
-          Last Name
-          <input
-            placeholder="Last Name"
-            id="lastName"
-            onChange={onChangeFunc}
-          />
-        </label>
-      </Form.Field>
-      <Form.Field>
-        <Checkbox label="I agree to the Terms and Conditions" />
+      <Form.Field required>
+        <Form.Input
+          label="Last Name"
+          placeholder="Last Name"
+          id="lastName"
+          onChange={onChangeFunc}
+          required
+        />
       </Form.Field>
       <Button type="reset">Reset</Button>
       <Button type="submit">Submit</Button>
     </Form>
-  </>
+    <List>
+      <List.Item>Apples</List.Item>
+      <List.Item>Pears</List.Item>
+      <List.Item>Oranges</List.Item>
+      {content.map((item) => (
+        <List.Item key={item.id}>{item.text}</List.Item>
+      ))}
+    </List>
+  </Container>
 );
 
 export default Home;
