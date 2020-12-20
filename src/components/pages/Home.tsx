@@ -4,7 +4,9 @@ import { Button, Checkbox, Form } from 'semantic-ui-react';
 const Home: FC<{
   content: { id: number; text: string }[];
   addFunction: () => void;
-}> = ({ content, addFunction }) => (
+  onChangeFunction: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onSubmitFunction: () => void;
+}> = ({ content, addFunction, onChangeFunction, onSubmitFunction }) => (
   <>
     {content.map((item) => (
       <p key={item.id}>{item.text}</p>
@@ -12,17 +14,25 @@ const Home: FC<{
     <Button color="green" onClick={addFunction}>
       押してね
     </Button>
-    <Form>
+    <Form onSubmit={onSubmitFunction}>
       <Form.Field>
         <label htmlFor="firstName">
           First Name
-          <input placeholder="First Name" id="firstName" />
+          <input
+            placeholder="First Name"
+            id="firstName"
+            onChange={onChangeFunction}
+          />
         </label>
       </Form.Field>
       <Form.Field>
         <label htmlFor="lastName">
           Last Name
-          <input placeholder="Last Name" id="lastName" />
+          <input
+            placeholder="Last Name"
+            id="lastName"
+            onChange={onChangeFunction}
+          />
         </label>
       </Form.Field>
       <Form.Field>
