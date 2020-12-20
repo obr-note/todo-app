@@ -39,7 +39,19 @@ const Home: FC<{
         <List.Item key={item.id}>{item.text}</List.Item>
       ))}
     </List>
-    <Link to="/item/1">お問い合わせ</Link>
+    <List divided relaxed>
+      {content.map((item) => (
+        <Link to={`/item/${item.id}`}>
+          <List.Item key={item.id}>
+            <List.Icon name="github" size="large" verticalAlign="middle" />
+            <List.Content>
+              <List.Header as="a">Semantic-Org/Semantic-UI</List.Header>
+              <List.Description as="a">Updated 10 mins ago</List.Description>
+            </List.Content>
+          </List.Item>
+        </Link>
+      ))}
+    </List>
   </Container>
 );
 
