@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { Container, Button, Form, List } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 const Home: FC<{
   content: { id: number; text: string }[];
@@ -38,6 +39,7 @@ const Home: FC<{
         <List.Item key={item.id}>{item.text}</List.Item>
       ))}
     </List>
+    <Link to="/item/1">お問い合わせ</Link>
   </Container>
 );
 
