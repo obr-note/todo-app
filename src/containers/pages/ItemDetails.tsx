@@ -1,27 +1,21 @@
 import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, Navigate } from 'react-router-dom';
 
 import ItemDetails from '../../components/pages/ItemDetails';
 import { TodoState, TodoItemState } from '../../reducer';
 
 const EnhancedItemDetails: FC = () => {
   const { itemId } = useParams();
-  const item = useSelector<TodoState, TodoItemState>((state) => {
-    const contentArray = state.content;
+  const content = useSelector<TodoState, TodoItemState[]>(
+    (state) => state.content,
+  );
+  const contentItem = content.find((element) => element.id === Number(itemId));
+  if (typeof contentItem !== 'undefined') {
+    return <ItemDetails item={contentItem} />;
+  }
 
-    return (
-      contentArray.find((element) => element.id === Number(itemId)) || {
-        id: 0,
-        title: '',
-        body: '',
-        createdAt: 0,
-        updatedAt: 0,
-      }
-    );
-  });
-
-  return <ItemDetails item={item} />;
+  return <Navigate to="/" replace />;
 };
 
 export default EnhancedItemDetails;
