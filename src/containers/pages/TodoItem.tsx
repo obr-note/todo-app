@@ -8,6 +8,7 @@ const EnhancedItem: FC = () => {
   return (
     <>
       <p>ここにいるよ</p>
+      <p>{new Date(Date.now()).toString()}</p>
       <p>{itemId}</p>
       <button type="button" onClick={() => navigate(-1)}>
         戻る

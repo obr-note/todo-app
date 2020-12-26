@@ -12,6 +12,15 @@ const Home: FC<{
     <Form onSubmit={onSubmitFunc} onReset={onResetFunc}>
       <Form.Field>
         <Form.Input
+          label="title"
+          placeholder="title"
+          id="title"
+          onChange={onChangeFunc}
+          required
+        />
+      </Form.Field>
+      {/* <Form.Field>
+        <Form.Input
           label="First Name"
           placeholder="First Name"
           id="firstName"
@@ -27,7 +36,7 @@ const Home: FC<{
           onChange={onChangeFunc}
           required
         />
-      </Form.Field>
+      </Form.Field> */}
       <Button type="reset">Reset</Button>
       <Button type="submit">Submit</Button>
     </Form>
@@ -41,12 +50,12 @@ const Home: FC<{
     </List>
     <List divided relaxed>
       {content.map((item) => (
-        <Link to={`/item/${item.id}`}>
+        <Link key={`link_${item.id}`} to={`/item/${item.id}`}>
           <List.Item key={item.id}>
             <List.Icon name="github" size="large" verticalAlign="middle" />
             <List.Content>
-              <List.Header as="a">Semantic-Org/Semantic-UI</List.Header>
-              <List.Description as="a">Updated 10 mins ago</List.Description>
+              <List.Header>Semantic-Org/Semantic-UI</List.Header>
+              <List.Description>Updated 10 mins ago</List.Description>
             </List.Content>
           </List.Item>
         </Link>
