@@ -1,5 +1,6 @@
 export const TodoActionType = {
   ADD: 'ADD',
+  EDIT: 'EDIT',
   DELETE: 'DELETE',
 } as const;
 
@@ -8,12 +9,22 @@ type ValueOf<T> = T[keyof T];
 export type TodoAction = {
   type: ValueOf<typeof TodoActionType>;
   id?: number;
-  text?: string;
+  title?: string;
+  body?: string;
+  createdAt?: number;
+  updatedAt?: number;
 };
 
-export const addItem = (text: string): TodoAction => ({
+export const addItem = (title: string, body: string): TodoAction => ({
   type: TodoActionType.ADD,
-  text,
+  title,
+  body,
+});
+
+export const editItem = (title: string, body: string): TodoAction => ({
+  type: TodoActionType.EDIT,
+  title,
+  body,
 });
 
 export const deleteItem = (id: number): TodoAction => ({

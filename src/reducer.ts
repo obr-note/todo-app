@@ -1,8 +1,16 @@
 import { Reducer } from 'redux';
 import { TodoAction, TodoActionType as Type } from './actions';
 
+export type TodoItemState = {
+  id: number;
+  title: string;
+  body: string;
+  createdAt: number;
+  updatedAt: number;
+};
+
 export type TodoState = {
-  content: { id: number; text: string }[];
+  content: TodoItemState[];
 };
 
 export const initialState: TodoState = {
@@ -19,7 +27,27 @@ export const todoReducer: Reducer<TodoState, TodoAction> = (
         ...state,
         content: [
           ...state.content,
-          { id: state.content.length + 1, text: action.text || '' },
+          {
+            id: state.content.length + 1,
+            title: action.title || '',
+            body: action.body || '',
+            createdAt: Date.now(),
+            updatedAt: Date.now(),
+          },
+        ],
+      };
+    case Type.EDIT:
+      return {
+        ...state,
+        content: [
+          ...state.content,
+          {
+            id: state.content.length + 1,
+            title: action.title || '',
+            body: action.body || '',
+            createdAt: Date.now(),
+            updatedAt: Date.now(),
+          },
         ],
       };
     case Type.DELETE:
