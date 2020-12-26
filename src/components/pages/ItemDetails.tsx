@@ -4,7 +4,10 @@ import { Container, Header, List, Button } from 'semantic-ui-react';
 
 import { TodoItemState } from '../../reducer';
 
-const EnhancedItemDetails: FC<{ item: TodoItemState }> = ({ item }) => {
+const EnhancedItemDetails: FC<{
+  item: TodoItemState;
+  deleteFunc: () => void;
+}> = ({ item, deleteFunc }) => {
   const navigate = useNavigate();
 
   return (
@@ -18,6 +21,7 @@ const EnhancedItemDetails: FC<{ item: TodoItemState }> = ({ item }) => {
       </List>
       <Button onClick={() => navigate(-1)}>戻る</Button>
       <Button onClick={() => navigate(1)}>進む</Button>
+      <Button onClick={deleteFunc}>削除</Button>
       <Button onClick={() => navigate('/')}>トップページへ</Button>
     </Container>
   );

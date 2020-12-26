@@ -10,10 +10,12 @@ export type TodoItemState = {
 };
 
 export type TodoState = {
+  idCounter: number;
   content: TodoItemState[];
 };
 
 export const initialState: TodoState = {
+  idCounter: 0,
   content: [],
 };
 
@@ -25,10 +27,11 @@ export const todoReducer: Reducer<TodoState, TodoAction> = (
     case Type.ADD:
       return {
         ...state,
+        idCounter: state.idCounter + 1,
         content: [
           ...state.content,
           {
-            id: state.content.length + 1,
+            id: state.idCounter + 1,
             title: action.title || '',
             body: action.body || '',
             createdAt: Date.now(),
