@@ -2,7 +2,6 @@ import { Reducer } from 'redux';
 import { TodoAction, TodoActionType as Type } from './actions';
 
 export type TodoItemState = {
-  id: number;
   title: string;
   body: string;
   createdAt: number;
@@ -11,12 +10,12 @@ export type TodoItemState = {
 
 export type TodoState = {
   idCounter: number;
-  content: TodoItemState[];
+  content: { [key: number]: TodoItemState };
 };
 
 export const initialState: TodoState = {
   idCounter: 0,
-  content: [],
+  content: {},
 };
 
 export const todoReducer: Reducer<TodoState, TodoAction> = (
@@ -28,36 +27,42 @@ export const todoReducer: Reducer<TodoState, TodoAction> = (
       return {
         ...state,
         idCounter: state.idCounter + 1,
-        content: [
+        content: {
           ...state.content,
-          {
-            id: state.idCounter + 1,
+          [state.idCounter + 1]: {
             title: action.title || '',
             body: action.body || '',
             createdAt: Date.now(),
             updatedAt: Date.now(),
           },
-        ],
+        },
       };
-    case Type.EDIT:
+    case Type.UPDATE:
+      if (typeof action.id === 'undefined') {
+        return state;
+      }
+
       return {
         ...state,
-        content: [
+        content: {
           ...state.content,
-          {
-            id: state.content.length + 1,
+          [action.id]: {
             title: action.title || '',
             body: action.body || '',
-            createdAt: Date.now(),
+            createdAt: state.content[action.id].createdAt,
             updatedAt: Date.now(),
           },
-        ],
+        },
       };
     case Type.DELETE:
-      return {
-        ...state,
-        content: [...state.content.filter((item) => item.id !== action.id)],
-      };
+      if (typeof action.id === 'undefined') {
+        return state;
+      }
+      // eslint-disable-next-line
+      const newState = state;
+      delete newState.content[action.id];
+
+      return newState;
     default: {
       const _: never = action.type;
 

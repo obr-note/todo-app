@@ -5,14 +5,14 @@ import { Link } from 'react-router-dom';
 import { TodoItemState } from '../../reducer';
 
 const Home: FC<{
-  content: TodoItemState[];
+  content: { [key: number]: TodoItemState };
 }> = ({ content }) => (
   <Container>
     <Link to="/items/new">新規作成</Link>
     <List divided relaxed>
-      {content.map((item) => (
-        <List.Item key={item.id}>
-          <Link to={`/item/${item.id}`}>{item.title}</Link>
+      {Object.keys(content).map((id) => (
+        <List.Item key={id}>
+          <Link to={`/items/show/${id}`}>{content[Number(id)].title}</Link>
         </List.Item>
       ))}
     </List>

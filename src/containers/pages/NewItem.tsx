@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -6,38 +6,24 @@ import { addItem } from '../../actions';
 import NewItem from '../../components/pages/NewItem';
 
 const EnhancedNewItem: FC = () => {
+  const inputTitle = useRef<HTMLInputElement>(null);
+  const inputBody = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const initialInputContent = { title: '', body: '' };
-  const [inputContent, setInputContent] = useState<{
-    title: string;
-    body: string;
-  }>(initialInputContent);
-  const onChangeFunc = (event: React.ChangeEvent<HTMLInputElement>) => {
-    let { title, body } = inputContent;
-    if (event.target.id === 'title') {
-      title = event.target.value;
-    } else if (event.target.id === 'body') {
-      body = event.target.value;
-    }
-    setInputContent({ title, body });
-  };
   const onSubmitFunc = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const { title, body } = inputContent;
-    dispatch(addItem(title, body));
-    navigate('/');
-  };
-  const onResetFunc = () => {
-    setInputContent(initialInputContent);
+    if (inputTitle.current && inputBody.current) {
+      dispatch(addItem(inputTitle.current.value, inputBody.current.value));
+      navigate('/');
+    }
   };
 
   return (
     <>
       <NewItem
-        onChangeFunc={onChangeFunc}
+        inputTitle={inputTitle}
+        inputBody={inputBody}
         onSubmitFunc={onSubmitFunc}
-        onResetFunc={onResetFunc}
       />
     </>
   );

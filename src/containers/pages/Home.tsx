@@ -5,7 +5,7 @@ import { TodoState, TodoItemState } from '../../reducer';
 import Home from '../../components/pages/Home';
 
 const EnhancedHome: FC = () => {
-  const content = useSelector<TodoState, TodoItemState[]>(
+  const content = useSelector<TodoState, { [key: number]: TodoItemState }>(
     (state) => state.content,
   );
 

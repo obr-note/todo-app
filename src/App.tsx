@@ -6,6 +6,7 @@ import './App.css';
 import EnhancedHome from './containers/pages/Home';
 import EnhancedItemDetails from './containers/pages/ItemDetails';
 import EnhancedNewItem from './containers/pages/NewItem';
+import EnhancedEditItem from './containers/pages/EditItem';
 
 const App: React.FC = () => {
   const { hash, pathname } = useLocation();
@@ -20,7 +21,8 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<EnhancedHome />} />
         <Route path="/items/new" element={<EnhancedNewItem />} />
-        <Route path="/item/:itemId" element={<EnhancedItemDetails />} />
+        <Route path="/items/edit/:itemId" element={<EnhancedEditItem />} />
+        <Route path="/items/show/:itemId" element={<EnhancedItemDetails />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Container>

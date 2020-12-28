@@ -1,6 +1,6 @@
 export const TodoActionType = {
   ADD: 'ADD',
-  EDIT: 'EDIT',
+  UPDATE: 'UPDATE',
   DELETE: 'DELETE',
 } as const;
 
@@ -21,8 +21,13 @@ export const addItem = (title: string, body: string): TodoAction => ({
   body,
 });
 
-export const editItem = (title: string, body: string): TodoAction => ({
-  type: TodoActionType.EDIT,
+export const updateItem = (
+  id: number,
+  title: string,
+  body: string,
+): TodoAction => ({
+  type: TodoActionType.UPDATE,
+  id,
   title,
   body,
 });
