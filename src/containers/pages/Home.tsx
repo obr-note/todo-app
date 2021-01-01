@@ -16,15 +16,13 @@ const EnhancedHome: FC<{ firebaseApp: firebase.app.App | undefined }> = ({
     if (typeof firebaseApp !== 'undefined') {
       firebaseApp
         .database()
-        .ref('sample/')
-        .orderByKey()
-        .limitToFirst(10)
+        .ref('content/')
         .on('value', (snapshot) => {
-          console.log(snapshot);
           const newState: { id: number; title: string }[] = [];
           snapshot.forEach((childSnapshot: firebase.database.DataSnapshot) => {
             const { key } = childSnapshot;
-            const title = childSnapshot.child('title');
+            // eslint-disable-next-line
+            const title = childSnapshot.child('title').val();
             if (typeof key === 'string' && typeof title === 'string') {
               newState.push({
                 id: parseInt(key, 10),
