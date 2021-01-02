@@ -38,18 +38,15 @@ const App: React.FC = () => {
         <Route path="/" element={<EnhancedHome firebaseApp={firebaseApp} />} />
         <Route
           path="/items/new"
-          element={<EnhancedNewItem />}
-          // firebaseApp={firebaseApp}
+          element={<EnhancedNewItem firebaseApp={firebaseApp} />}
         />
         <Route
           path="/items/edit/:itemId"
-          element={<EnhancedEditItem />}
-          // firebaseApp={firebaseApp}
+          element={<EnhancedEditItem firebaseApp={firebaseApp} />}
         />
         <Route
           path="/items/show/:itemId"
-          element={<EnhancedItemDetails />}
-          // firebaseApp={firebaseApp}
+          element={<EnhancedItemDetails firebaseApp={firebaseApp} />}
         />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

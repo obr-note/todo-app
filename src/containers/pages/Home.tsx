@@ -11,33 +11,39 @@ const EnhancedHome: FC<{ firebaseApp: firebase.app.App | undefined }> = ({
   // const content = useSelector<TodoState, { [key: number]: TodoItemState }>(
   //   (state) => state.content,
   // );
-  const [content, setContent] = useState<{ id: number; title: string }[]>([]);
+  const [items, setItems] = useState<{ id: number; title: string }[]>([]);
   useEffect(() => {
     if (typeof firebaseApp !== 'undefined') {
-      firebaseApp
-        .database()
-        .ref('content/')
-        .on('value', (snapshot) => {
-          const newState: { id: number; title: string }[] = [];
-          snapshot.forEach((childSnapshot: firebase.database.DataSnapshot) => {
-            const { key } = childSnapshot;
-            // eslint-disable-next-line
-            const title = childSnapshot.child('title').val();
-            if (typeof key === 'string' && typeof title === 'string') {
-              newState.push({
-                id: parseInt(key, 10),
-                title,
-              });
-            }
-          });
-          setContent(newState);
+      const onValueChange = (snapshot: firebase.database.DataSnapshot) => {
+        const newState: { id: number; title: string }[] = [];
+        snapshot.forEach((childSnapshot: firebase.database.DataSnapshot) => {
+          const { key } = childSnapshot;
+          // eslint-disable-next-line
+          const title = childSnapshot.child('title').val();
+          if (typeof key === 'string' && typeof title === 'string') {
+            newState.push({
+              id: parseInt(key, 10),
+              title,
+            });
+          }
         });
+        setItems(newState);
+      };
+      firebaseApp.database().ref('items/').on('value', onValueChange);
+
+      return () => {
+        firebaseApp.database().ref('items/').off('value', onValueChange);
+      };
     }
+
+    return () => {
+      console.log('firebaseApp is undefined');
+    };
   }, [firebaseApp]);
 
   return (
     <>
-      <Home content={content} />
+      <Home items={items} />
     </>
   );
 };
