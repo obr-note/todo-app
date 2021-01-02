@@ -1,41 +1,20 @@
 import React, { FC } from 'react';
-import { Container, Button, Form, List } from 'semantic-ui-react';
+import { Container, List } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+
+// import { TodoItemState } from '../../reducer';
 
 const Home: FC<{
-  content: { id: number; text: string }[];
-  onChangeFunc: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  onSubmitFunc: (event: React.FormEvent<HTMLFormElement>) => void;
-  onResetFunc: (event: React.FormEvent<HTMLFormElement>) => void;
-}> = ({ content, onChangeFunc, onSubmitFunc, onResetFunc }) => (
+  items: { id: number; title: string }[];
+  // content: { [key: number]: TodoItemState };
+}> = ({ items }) => (
   <Container>
-    <Form onSubmit={onSubmitFunc} onReset={onResetFunc}>
-      <Form.Field>
-        <Form.Input
-          label="First Name"
-          placeholder="First Name"
-          id="firstName"
-          onChange={onChangeFunc}
-          required
-        />
-      </Form.Field>
-      <Form.Field required>
-        <Form.Input
-          label="Last Name"
-          placeholder="Last Name"
-          id="lastName"
-          onChange={onChangeFunc}
-          required
-        />
-      </Form.Field>
-      <Button type="reset">Reset</Button>
-      <Button type="submit">Submit</Button>
-    </Form>
-    <List>
-      <List.Item>Apples</List.Item>
-      <List.Item>Pears</List.Item>
-      <List.Item>Oranges</List.Item>
-      {content.map((item) => (
-        <List.Item key={item.id}>{item.text}</List.Item>
+    <Link to="/items/new">新規作成</Link>
+    <List divided relaxed>
+      {items.map(({ id, title }) => (
+        <List.Item key={id}>
+          <Link to={`/items/show/${id}`}>{title}</Link>
+        </List.Item>
       ))}
     </List>
   </Container>

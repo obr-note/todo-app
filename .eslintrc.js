@@ -104,6 +104,7 @@ module.exports = {
     // https://stackoverflow.com/questions/63818415/react-was-used-before-it-was-defined#answer-64024916
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["error"],
+    "jsx-a11y/label-has-associated-control": "off",
   },
   overrides: [
     {
