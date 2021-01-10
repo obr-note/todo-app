@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router';
-import { Container } from 'semantic-ui-react';
+// import { Container, Segment, Header, Image } from 'semantic-ui-react';
 import firebase from 'firebase/app';
 
 import './App.css';
@@ -8,6 +8,7 @@ import EnhancedHome from './containers/pages/Home';
 import EnhancedItemDetails from './containers/pages/ItemDetails';
 import EnhancedNewItem from './containers/pages/NewItem';
 import EnhancedEditItem from './containers/pages/EditItem';
+import Layout from './components/templates/Layout';
 
 const App: React.FC = () => {
   const { hash, pathname } = useLocation();
@@ -32,25 +33,23 @@ const App: React.FC = () => {
   }, [hash, pathname]);
 
   return (
-    <Container>
-      <h1 className="App-title">TodoApp</h1>
-      <Routes>
-        <Route path="/" element={<EnhancedHome firebaseApp={firebaseApp} />} />
-        <Route
-          path="/items/new"
-          element={<EnhancedNewItem firebaseApp={firebaseApp} />}
-        />
-        <Route
-          path="/items/edit/:itemId"
-          element={<EnhancedEditItem firebaseApp={firebaseApp} />}
-        />
-        <Route
-          path="/items/show/:itemId"
-          element={<EnhancedItemDetails firebaseApp={firebaseApp} />}
-        />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-    </Container>
+    <Routes>
+      <Route path="/" element={<EnhancedHome firebaseApp={firebaseApp} />} />
+      <Route path="/layout" element={<Layout />} />
+      <Route
+        path="/items/new"
+        element={<EnhancedNewItem firebaseApp={firebaseApp} />}
+      />
+      <Route
+        path="/items/edit/:itemId"
+        element={<EnhancedEditItem firebaseApp={firebaseApp} />}
+      />
+      <Route
+        path="/items/show/:itemId"
+        element={<EnhancedItemDetails firebaseApp={firebaseApp} />}
+      />
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
   );
 };
 
