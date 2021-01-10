@@ -2,7 +2,8 @@ import React, { FC, useRef, useState, useEffect } from 'react';
 // import { useSelector, useDispatch } from 'react-redux';
 // import { useNavigate, useParams, Navigate } from 'react-router';
 import { useNavigate, useParams } from 'react-router';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/firebase-database';
 
 // import { TodoState, TodoItemState } from '../../reducer';
 // import { updateItem } from '../../actions';

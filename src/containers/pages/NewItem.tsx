@@ -1,7 +1,8 @@
 import React, { FC, useRef } from 'react';
 // import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/database';
 
 // import { addItem } from '../../actions';
 import NewItem from '../../components/pages/NewItem';

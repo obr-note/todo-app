@@ -2,7 +2,8 @@ import React, { FC, useState, useEffect } from 'react';
 // import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 // import { useParams, useNavigate, Navigate } from 'react-router-dom';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/firebase-database';
 
 import ItemDetails from '../../components/pages/ItemDetails';
 // import { deleteItem } from '../../actions';

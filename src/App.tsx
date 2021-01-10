@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router';
 import { Container } from 'semantic-ui-react';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 
 import './App.css';
 import EnhancedHome from './containers/pages/Home';
@@ -15,13 +15,13 @@ const App: React.FC = () => {
   useEffect(() => {
     if (typeof firebaseApp === 'undefined') {
       const firebaseConfig = {
-        apiKey: 'AIzaSyDXsakEgdsUTbseeeKmukpqHySP6dqTgYk',
-        authDomain: 'obrnote-todo-app.firebaseapp.com',
-        projectId: 'obrnote-todo-app',
-        storageBucket: 'obrnote-todo-app.appspot.com',
-        messagingSenderId: '609908246254',
-        appId: '1:609908246254:web:637b284388e61e7b4715ff',
-        measurementId: 'G-1Q1XG4L8V6',
+        apiKey: process.env.REACT_APP_API_KEY,
+        authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+        projectId: process.env.REACT_APP_PROJECT_ID,
+        storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+        messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+        appId: process.env.REACT_APP_APP_ID,
+        measurementId: process.env.REACT_APP_MEASUREMENT_ID,
       };
       setFirebaseApp(firebase.initializeApp(firebaseConfig));
     }
