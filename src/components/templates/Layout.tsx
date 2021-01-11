@@ -11,21 +11,6 @@ import {
   Visibility,
 } from 'semantic-ui-react';
 
-const menuStyle = {
-  border: 'none',
-  borderRadius: 0,
-  boxShadow: 'none',
-  marginBottom: '1em',
-  marginTop: '4em',
-  transition: 'box-shadow 0.5s ease, padding 0.5s ease',
-};
-
-const fixedMenuStyle = {
-  backgroundColor: '#fff',
-  border: '1px solid #ddd',
-  boxShadow: '0px 3px 5px rgba(0, 0, 0, 0.2)',
-};
-
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [menuFixed, setMenuFixed] = React.useState(false);
 
@@ -46,14 +31,6 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   return (
     <div>
-      <style>
-        {`
-          html, body {
-            background: #fff;
-          }
-        `}
-      </style>
-
       <Container text>
         <Header as="h1">Share your picture !!!</Header>
         <p>This is a photo sharing site for everyone!</p>
@@ -63,11 +40,12 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         onBottomPassed={stickTopMenu}
         onBottomVisible={unStickTopMenu}
         once={false}
+        id="menu-wrapper"
       >
         <Menu
           borderless
           fixed={menuFixed ? 'top' : undefined}
-          style={menuFixed ? fixedMenuStyle : menuStyle}
+          className={menuFixed ? 'menu-style-fixed' : 'menu-style'}
         >
           <Container text>
             <Menu.Item>
@@ -108,11 +86,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
       <Container text>{children}</Container>
 
-      <Segment
-        inverted
-        style={{ margin: '5em 0em 0em', padding: '5em 0em' }}
-        vertical
-      >
+      <Segment inverted id="footer-wrapper" vertical>
         <Container textAlign="center">
           <Image src="./images/logo.png" centered size="mini" />
           <List horizontal inverted divided link size="small">

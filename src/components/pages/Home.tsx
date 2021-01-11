@@ -30,6 +30,106 @@ const Home: FC<{
       title: 'TypeScript勉強会',
       text: 'TypeScriptの勉強をします',
     },
+    {
+      title: 'React勉強会',
+      text: 'Reactの勉強をします',
+    },
+    {
+      title: 'JavaScript勉強会',
+      text: 'JavaScriptの勉強をします',
+    },
+    {
+      title: 'Ruby勉強会',
+      text: 'Rubyの勉強をします',
+    },
+    {
+      title: 'Rails勉強会',
+      text: 'Railsの勉強をします',
+    },
+    {
+      title: 'TypeScript勉強会',
+      text: 'TypeScriptの勉強をします',
+    },
+    {
+      title: 'React勉強会',
+      text: 'Reactの勉強をします',
+    },
+    {
+      title: 'JavaScript勉強会',
+      text: 'JavaScriptの勉強をします',
+    },
+    {
+      title: 'Ruby勉強会',
+      text: 'Rubyの勉強をします',
+    },
+    {
+      title: 'Rails勉強会',
+      text: 'Railsの勉強をします',
+    },
+    {
+      title: 'TypeScript勉強会',
+      text: 'TypeScriptの勉強をします',
+    },
+    {
+      title: 'React勉強会',
+      text: 'Reactの勉強をします',
+    },
+    {
+      title: 'JavaScript勉強会',
+      text: 'JavaScriptの勉強をします',
+    },
+    {
+      title: 'Ruby勉強会',
+      text: 'Rubyの勉強をします',
+    },
+    {
+      title: 'Rails勉強会',
+      text: 'Railsの勉強をします',
+    },
+    {
+      title: 'TypeScript勉強会',
+      text: 'TypeScriptの勉強をします',
+    },
+    {
+      title: 'React勉強会',
+      text: 'Reactの勉強をします',
+    },
+    {
+      title: 'JavaScript勉強会',
+      text: 'JavaScriptの勉強をします',
+    },
+    {
+      title: 'Ruby勉強会',
+      text: 'Rubyの勉強をします',
+    },
+    {
+      title: 'Rails勉強会',
+      text: 'Railsの勉強をします',
+    },
+    {
+      title: 'TypeScript勉強会',
+      text: 'TypeScriptの勉強をします',
+    },
+    {
+      title: 'React勉強会',
+      text: 'Reactの勉強をします',
+    },
+    {
+      title: 'JavaScript勉強会',
+      text: 'JavaScriptの勉強をします',
+    },
+    {
+      title: 'Ruby勉強会',
+      text: 'Rubyの勉強をします',
+    },
+    {
+      title: 'Rails勉強会',
+      text: 'Railsの勉強をします',
+    },
+    {
+      title: 'TypeScript勉強会',
+      text: 'TypeScriptの勉強をします',
+    },
   ];
   // 1行に表示するカラム数
   const breakpointColumnsObj = {

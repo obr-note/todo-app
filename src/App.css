@@ -2,7 +2,32 @@
   background-color: #f7f7f7 !important;
 }
 
-/* https://github.com/paulcollett/react-masonry-css */
+/* ========= Layout =========== */
+#menu-wrapper {
+  background-color: #fff;
+}
+
+.menu-style {
+  margin-top: 4em !important;
+  margin-bottom: 1em !important;
+  border: none !important;
+  border-radius: 0;
+  box-shadow: none;
+  transition: box-shadow 0.5s ease, padding 0.5s ease;
+}
+
+.menu-style-fixed {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+#footer-wrapper {
+  padding: 5em 0;
+  margin: 5em 0 0;
+}
+
+/* ========= https://github.com/paulcollett/react-masonry-css =========== */
 .my-masonry-grid {
   display: -webkit-box; /* Not needed if autoprefixing */
   display: -ms-flexbox; /* Not needed if autoprefixing */
