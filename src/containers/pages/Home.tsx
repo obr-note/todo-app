@@ -1,20 +1,17 @@
-import React, { FC, useEffect, useState } from 'react';
-// import { useSelector } from 'react-redux';
+import React, { FC } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/database';
 
-// import { TodoState, TodoItemState } from '../../reducer';
 import Home from '../../components/pages/Home';
 
 const EnhancedHome: FC<{ firebaseApp: firebase.app.App | undefined }> = ({
   firebaseApp,
 }) => {
-  // const content = useSelector<TodoState, { [key: number]: TodoItemState }>(
-  //   (state) => state.content,
-  // );
-  const [items, setItems] = useState<{ id: number; title: string }[]>([]);
-  useEffect(() => {
+  const [items, setItems] = React.useState<{ id: number; title: string }[]>([]);
+  console.log('rendering component');
+  React.useEffect(() => {
     if (typeof firebaseApp !== 'undefined') {
+      console.log('rendering firebaseapp');
       const onValueChange = (snapshot: firebase.database.DataSnapshot) => {
         const newState: { id: number; title: string }[] = [];
         snapshot.forEach((childSnapshot: firebase.database.DataSnapshot) => {

@@ -8,7 +8,9 @@
 }
 
 .menu-style {
-  margin-top: 4em !important;
+  margin-top: 0 !important;
+
+  /* margin-top: 4em !important; */
   margin-bottom: 1em !important;
   border: none !important;
   border-radius: 0;
@@ -17,9 +19,9 @@
 }
 
 .menu-style-fixed {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  background-color: #fff !important;
+  border: 1px solid #ddd !important;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2) !important;
 }
 
 #footer-wrapper {
@@ -45,4 +47,12 @@
 .my-masonry-grid_column > .event-card { /* change div to reference your elements you put in <Masonry> */
   margin-bottom: 30px;
   background: grey;
+}
+
+/* ===== TestPage ===== */
+#imgSample {
+  display: block;
+  width: 200px;
+  height: 200px;
+  background-color: #c0c0c0;
 }

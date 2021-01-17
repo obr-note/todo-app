@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router';
-// import { Container, Segment, Header, Image } from 'semantic-ui-react';
 import firebase from 'firebase/app';
 
 import './App.css';
@@ -8,7 +7,9 @@ import EnhancedHome from './containers/pages/Home';
 import EnhancedItemDetails from './containers/pages/ItemDetails';
 import EnhancedNewItem from './containers/pages/NewItem';
 import EnhancedEditItem from './containers/pages/EditItem';
-import Layout from './components/templates/Layout';
+import HeaderTemplete from './components/templates/Header';
+import FooterTemplete from './components/templates/Footer';
+import TestPage from './components/pages/TestPage';
 
 const App: React.FC = () => {
   const { hash, pathname } = useLocation();
@@ -33,9 +34,12 @@ const App: React.FC = () => {
   }, [hash, pathname]);
 
   return (
-    <Layout>
+    <>
+      <HeaderTemplete />
+      <p>ここここお</p>
       <Routes>
         <Route path="/" element={<EnhancedHome firebaseApp={firebaseApp} />} />
+        <Route path="/test" element={<TestPage firebaseApp={firebaseApp} />} />
         <Route
           path="/items/new"
           element={<EnhancedNewItem firebaseApp={firebaseApp} />}
@@ -50,7 +54,8 @@ const App: React.FC = () => {
         />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-    </Layout>
+      <FooterTemplete />
+    </>
   );
 };
 

@@ -138,17 +138,12 @@ const Home: FC<{
     1048: 2,
     576: 1,
   };
+  console.log('render home.tsx');
 
   return (
     <Container>
       <Link to="/items/new">新規作成</Link>
-      <List divided relaxed>
-        {items.map(({ id, title }) => (
-          <List.Item key={id}>
-            <Link to={`/items/show/${id}`}>{title}</Link>
-          </List.Item>
-        ))}
-      </List>
+
       <h1>勉強会一覧</h1>
       <Masonry
         breakpointCols={breakpointColumnsObj}
@@ -162,6 +157,13 @@ const Home: FC<{
           </div>
         ))}
       </Masonry>
+      <List divided relaxed>
+        {items.map(({ id, title }) => (
+          <List.Item key={id}>
+            <Link to={`/items/show/${id}`}>{title}</Link>
+          </List.Item>
+        ))}
+      </List>
     </Container>
   );
 };

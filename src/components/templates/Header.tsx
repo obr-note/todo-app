@@ -5,13 +5,11 @@ import {
   Dropdown,
   Header,
   Image,
-  List,
   Menu,
-  Segment,
   Visibility,
 } from 'semantic-ui-react';
 
-const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const HeaderTemplete: React.FC = () => {
   const [menuFixed, setMenuFixed] = React.useState(false);
 
   const stickTopMenu = React.useCallback(() => {
@@ -30,7 +28,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   }, []);
 
   return (
-    <div>
+    <>
       <Container text>
         <Header as="h1">Share your picture !!!</Header>
         <p>This is a photo sharing site for everyone!</p>
@@ -83,30 +81,8 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           </Container>
         </Menu>
       </Visibility>
-
-      <Container text>{children}</Container>
-
-      <Segment inverted id="footer-wrapper" vertical>
-        <Container textAlign="center">
-          <Image src="./images/logo.png" centered size="mini" />
-          <List horizontal inverted divided link size="small">
-            <List.Item as="a" href="#">
-              Site Map
-            </List.Item>
-            <List.Item as="a" href="#">
-              Contact Us
-            </List.Item>
-            <List.Item as="a" href="#">
-              Terms and Conditions
-            </List.Item>
-            <List.Item as="a" href="#">
-              Privacy Policy
-            </List.Item>
-          </List>
-        </Container>
-      </Segment>
-    </div>
+    </>
   );
 };
 
-export default Layout;
+export default HeaderTemplete;
