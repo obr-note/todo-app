@@ -49,6 +49,31 @@
   background: grey;
 }
 
+/* react-dropzone */
+.dropzone {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  color: #bdbdbd;
+  background-color: #fafafa;
+  border-color: #eee;
+  border-style: dashed;
+  border-width: 2px;
+  border-radius: 2px;
+  outline: none;
+  transition: border 0.24s ease-in-out;
+}
+
+.dropzone:focus {
+  border-color: #2196f3;
+}
+
+.dropzone.disabled {
+  opacity: 0.6;
+}
+
 /* ===== TestPage ===== */
 #imgSample {
   display: block;
