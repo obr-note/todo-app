@@ -36,7 +36,6 @@ const App: React.FC = () => {
   return (
     <>
       <HeaderTemplete />
-      <p>ここここお</p>
       <Routes>
         <Route path="/" element={<EnhancedHome firebaseApp={firebaseApp} />} />
         <Route path="/test" element={<TestPage firebaseApp={firebaseApp} />} />
