@@ -3,7 +3,6 @@ import { Container, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import Masonry from 'react-masonry-css';
 
-// import { TodoItemState } from '../../reducer';
 import { PostState } from '../../reducer';
 
 const Home: FC<{
@@ -16,7 +15,6 @@ const Home: FC<{
     1048: 2,
     576: 1,
   };
-  console.log('render home.tsx');
 
   return (
     <Container>

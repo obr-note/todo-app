@@ -16,47 +16,6 @@ const EnhancedHome: FC<{ firebaseApp: firebase.app.App | undefined }> = ({
   React.useEffect(() => {
     setPosts(postsData);
   }, [postsData]);
-  console.log(posts);
-  // const addPostsFunc = React.useCallback(() => {
-  //   if (typeof firebaseApp !== 'undefined') {
-  //     const onValueChange = (snapshot: firebase.database.DataSnapshot) => {
-  //       console.log('わあああ');
-  //       console.log(snapshot);
-  //       // const newState: { id: number; title: string }[] = [];
-  //       // snapshot.forEach((childSnapshot: firebase.database.DataSnapshot) => {
-  //       //   const { key } = childSnapshot;
-  //       //   // eslint-disable-next-line
-  //       //   const title = childSnapshot.child('title').val();
-  //       //   if (typeof key === 'string' && typeof title === 'string') {
-  //       //     newState.push({
-  //       //       id: parseInt(key, 10),
-  //       //       title,
-  //       //     });
-  //       //   }
-  //       // });
-  //     };
-  //     firebaseApp
-  //       .database()
-  //       .ref('posts/')
-  //       .once('value')
-  //       .then(onValueChange)
-  //       .catch(() => {
-  //         return false;
-  //       });
-  //   }
-
-  //   return () => {
-  //     console.log('firebaseApp is undefined');
-  //   };
-  // }, [firebaseApp]);
-  // export type PostState = {
-  //   id: string;
-  //   imageUrl: string;
-  //   createUser: string;
-  //   favoritesCount: number;
-  //   createdAt: number;
-  //   updatedAt: number;
-  // };
   React.useEffect(() => {
     if (typeof firebaseApp !== 'undefined') {
       const onValueChange = (snapshot: firebase.database.DataSnapshot) => {
@@ -100,36 +59,6 @@ const EnhancedHome: FC<{ firebaseApp: firebase.app.App | undefined }> = ({
         });
     }
   }, [firebaseApp, dispatch]);
-  // console.log(posts);
-  // const addPostsFunc = React.useCallback(() => {
-  //   if (typeof firebaseApp !== 'undefined') {
-  //     console.log('rendering firebaseapp');
-  //     const onValueChange = (snapshot: firebase.database.DataSnapshot) => {
-  //       const newState: { id: number; title: string }[] = [];
-  //       snapshot.forEach((childSnapshot: firebase.database.DataSnapshot) => {
-  //         const { key } = childSnapshot;
-  //         // eslint-disable-next-line
-  //         const title = childSnapshot.child('title').val();
-  //         if (typeof key === 'string' && typeof title === 'string') {
-  //           newState.push({
-  //             id: parseInt(key, 10),
-  //             title,
-  //           });
-  //         }
-  //       });
-  //       setItems(newState);
-  //     };
-  //     firebaseApp.database().ref('items/').on('value', onValueChange);
-
-  //     return () => {
-  //       firebaseApp.database().ref('items/').off('value', onValueChange);
-  //     };
-  //   }
-
-  //   return () => {
-  //     console.log('firebaseApp is undefined');
-  //   };
-  // }, [firebaseApp]);
 
   return (
     <>
