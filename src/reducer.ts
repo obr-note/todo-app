@@ -10,7 +10,7 @@ export type PostState = {
   updatedAt: number;
 };
 
-export type PostsState = {
+export type AppState = {
   user: {
     mailAddress: string;
     nickname: string;
@@ -21,7 +21,7 @@ export type PostsState = {
   myPosts: PostState[];
 };
 
-export const initialState: PostsState = {
+export const initialState: AppState = {
   user: {
     mailAddress: '',
     nickname: '',
@@ -32,10 +32,10 @@ export const initialState: PostsState = {
   myPosts: [],
 };
 
-export const todoReducer: Reducer<PostsState, PostAction> = (
-  state: PostsState = initialState,
+export const todoReducer: Reducer<AppState, PostAction> = (
+  state: AppState = initialState,
   action: PostAction,
-): PostsState => {
+): AppState => {
   switch (action.type) {
     case Type.USER_ADD:
       return {
