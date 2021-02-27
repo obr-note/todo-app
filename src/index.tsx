@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'semantic-ui-css/semantic.min.css';
-import { todoReducer, initialState } from './reducer';
+import { AppSlice } from './reducer';
 
-const store = createStore(todoReducer, initialState);
+const store = configureStore({ reducer: AppSlice.reducer });
 
 ReactDOM.render(
   <Provider store={store}>
