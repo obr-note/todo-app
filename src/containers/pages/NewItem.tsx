@@ -3,7 +3,13 @@ import React, { FC, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import firebase from 'firebase/app';
 import 'firebase/database';
+import 'firebase/storage';
 
+// import React, { FC } from 'react';
+// import firebase from 'firebase/app';
+// import 'firebase/storage';
+// import { Image, Progress, Button } from 'semantic-ui-react';
+// import { useDropzone } from 'react-dropzone';
 // import { addItem } from '../../actions';
 import NewItem from '../../components/pages/NewItem';
 

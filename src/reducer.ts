@@ -1,5 +1,4 @@
-import { Reducer } from 'redux';
-import { PostAction, PostActionType as Type } from './actions';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 export type PostState = {
   id: string;
@@ -21,7 +20,7 @@ export type AppState = {
   myPosts: PostState[];
 };
 
-export const initialState: AppState = {
+const initialState: AppState = {
   user: {
     mailAddress: '',
     nickname: '',
@@ -32,72 +31,53 @@ export const initialState: AppState = {
   myPosts: [],
 };
 
-export const todoReducer: Reducer<AppState, PostAction> = (
-  state: AppState = initialState,
-  action: PostAction,
-): AppState => {
-  switch (action.type) {
-    case Type.USER_ADD:
-      return {
-        ...state,
-        user: {
-          mailAddress: action.mailAddress || '',
-          nickname: action.nickname || '',
-        },
-      };
+interface addUserType {
+  mailAddress: string;
+  nickname: string;
+}
 
-    case Type.POSTS_ADD:
-      return {
-        ...state,
-        posts: [...state.posts, ...(action.posts || [])],
-      };
-
-    case Type.POSTS_REFRESH:
-      return {
-        ...state,
-        posts: [...(action.posts || [])],
-      };
-
-    case Type.POPULAR_POSTS_ADD:
-      return {
-        ...state,
-        posts: [...state.posts, ...(action.posts || [])],
-      };
-
-    case Type.POPULAR_POSTS_REFRESH:
-      return {
-        ...state,
-        posts: [...(action.posts || [])],
-      };
-
-    case Type.FAVORITE_POSTS_ADD:
-      return {
-        ...state,
-        posts: [...state.posts, ...(action.posts || [])],
-      };
-
-    case Type.FAVORITE_POSTS_REFRESH:
-      return {
-        ...state,
-        posts: [...(action.posts || [])],
-      };
-
-    case Type.MY_POSTS_ADD:
-      return {
-        ...state,
-        posts: [...state.posts, ...(action.posts || [])],
-      };
-
-    case Type.MY_POSTS_REFRESH:
-      return {
-        ...state,
-        posts: [...(action.posts || [])],
-      };
-
-    default: {
-      const _: never = action.type;
-
-      return state;
-    }
-  }
-};
+export const AppSlice = createSlice({
+  name: 'post',
+  initialState,
+  reducers: {
+    addUser: (state, action: PayloadAction<addUserType>) => ({
+      ...state,
+      user: {
+        mailAddress: action.payload.mailAddress,
+        nickname: action.payload.nickname,
+      },
+    }),
+    addPosts: (state, action: PayloadAction<PostState[]>) => ({
+      ...state,
+      posts: [...state.posts, ...action.payload],
+    }),
+    refreshPosts: (state, action: PayloadAction<PostState[]>) => ({
+      ...state,
+      posts: action.payload,
+    }),
+    addPopularPosts: (state, action: PayloadAction<PostState[]>) => ({
+      ...state,
+      popularPosts: [...state.popularPosts, ...action.payload],
+    }),
+    refreshPopularPosts: (state, action: PayloadAction<PostState[]>) => ({
+      ...state,
+      popularPosts: action.payload,
+    }),
+    addFavoritePosts: (state, action: PayloadAction<PostState[]>) => ({
+      ...state,
+      favoritePosts: [...state.favoritePosts, ...action.payload],
+    }),
+    refreshFavoritePosts: (state, action: PayloadAction<PostState[]>) => ({
+      ...state,
+      favoritePosts: action.payload,
+    }),
+    addMyPosts: (state, action: PayloadAction<PostState[]>) => ({
+      ...state,
+      myPosts: [...state.myPosts, ...action.payload],
+    }),
+    refreshMyPosts: (state, action: PayloadAction<PostState[]>) => ({
+      ...state,
+      myPosts: action.payload,
+    }),
+  },
+});
