@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router';
 import firebase from 'firebase/app';
+import { Icon } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 import './App.css';
 import EnhancedHome from './containers/pages/Home';
@@ -54,6 +56,23 @@ const App: React.FC = () => {
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <FooterTemplete />
+      <Link
+        style={{
+          position: 'fixed',
+          bottom: '16px',
+          right: '16px',
+        }}
+        to="/items/new"
+      >
+        <Icon
+          circular
+          inverted
+          link
+          color="teal"
+          name="paper plane"
+          size="big"
+        />
+      </Link>
     </>
   );
 };
