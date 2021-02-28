@@ -4,8 +4,7 @@ import firebase from 'firebase/app';
 import 'firebase/database';
 
 import Home from '../../components/pages/Home';
-import { AppState, PostState } from '../../reducer';
-import { addPosts } from '../../actions';
+import { AppState, PostState, AppSlice } from '../../reducer';
 
 const EnhancedHome: FC<{ firebaseApp: firebase.app.App | undefined }> = ({
   firebaseApp,
@@ -47,7 +46,7 @@ const EnhancedHome: FC<{ firebaseApp: firebase.app.App | undefined }> = ({
             });
           }
         });
-        dispatch(addPosts(newState));
+        dispatch(AppSlice.actions.refreshPosts(newState));
       };
       firebaseApp
         .database()
